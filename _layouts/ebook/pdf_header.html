@@ -1,0 +1,14 @@
+{% extends "./page.html" %}
+
+{% block body %}
+<div class="pdf-header">
+  <p>
+    {% if book.draft %}
+      <div style="position:absolute;text-align:left">{{ book.title }}[DRAFT]</div>
+    {% else %}
+      <div style="position:absolute;text-align:left">{{ book.title }}</div>
+    {% endif %}
+    <div style="text-align:right">{{ page.title }}</div>
+  </p>  
+</div>
+{% endblock %}

@@ -1,0 +1,41 @@
+h1 {
+    color: #0860A8;
+    font-weight: bold;
+    font-size: 170%;
+    text-transform: uppercase;
+}
+
+h2 {
+    color: #0860A8;
+    font-weight: bold;
+    font-size: 160%
+}
+
+h3 {
+    color: #0860A8;
+    font-weight: bold;
+    font-size: 150%
+}
+
+h4 {
+    color: #0860A8;
+    font-weight: bold;
+    font-size: 140%
+}
+
+h5 {
+    font-weight: bold;
+    font-size: 130%;
+}
+
+h6 {
+    font-weight: bold;
+    font-size: 100%;
+    text-align: center;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+    

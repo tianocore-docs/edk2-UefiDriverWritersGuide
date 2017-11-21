@@ -1,0 +1,98 @@
+{% extends "./page.html" %}
+
+{% block title %}{{ "SUMMARY"|t }}{% endblock %}
+
+{% macro articles(_articles) %}
+    {% for article in _articles %}
+        {% if options.format == "mobi" %}
+        <blockquote>
+        {% else %}
+        <li>
+        {% endif %}
+            <span class="inner">
+                {% if article.path or article.url %}
+                    {% if article.path %}
+                        <a href="{{ article.path|contentURL }}{{ article.anchor }}">{{ article.title }}</a>
+                    {% else %}
+                        <a target="_blank" href="{{ article.url }}">{{ article.title }}</a>
+                    {% endif %}
+                {% else %}
+                    <span>{{ article.title }}</span>
+                {% endif %}
+                {% if 0 %}
+                <span class="page">{{ article.level }}</span>
+                {% endif %}
+            </span>
+            {% if article.articles.length > 0 %}
+                {% if options.format == "mobi" %}
+                    <blockquote>
+                        {{ articles(article.articles) }}
+                    </blockquote>
+                {% else %}
+                    <ol>
+                        {{ articles(article.articles) }}
+                    </ol>
+                {% endif %}
+            {% endif %}
+        {% if options.format == "mobi" %}
+        </blockquote>
+        {% else %}
+        </li>
+        {% endif %}
+    {% endfor %}
+{% endmacro %}
+
+{% block page %}
+{% if options.format == "mobi" %}
+<div>
+{% else %}
+<div class="section toc">
+{% endif %}
+    <h1>{{ "SUMMARY"|t }}</h1>
+    {% if options.format == "mobi" %}
+    <blockquote>
+    {% else %}
+    <ol>
+    {% endif %}
+        {% for part in summary.parts %}
+            {% if part.title %}
+                {% if options.format == "mobi" %}
+                    <blockquote>
+                        <span>{{ part.title }}</span>
+                    </blockquote>
+                {% else %}
+                    <li class="part-title">
+                        <span>{{ part.title }}</span>
+                    </li>
+                {% endif %}
+            {% endif %}
+            {{ articles(part.articles) }}
+
+            {% if not loop.last and not options.format == "mobi" %}
+            <li class="divider"></li>
+            {% endif %}
+        {% endfor %}
+
+        {% if glossary.path %}
+            {% if options.format == "mobi" %}
+                <blockquote>
+                    <span class="inner">
+                        <a href="{{ ('/' + glossary.path)|contentURL }}">{{ "GLOSSARY"|t }}</a>
+                    </span>
+                </blockquote>
+            {% else %}
+                <li>
+                    <span class="inner">
+                        <a href="{{ ('/' + glossary.path)|contentURL }}">{{ "GLOSSARY"|t }}</a>
+                    </span>
+                </li>
+            {% endif %}
+        {% endif %}
+    {% if options.format == "mobi" %}
+    </blockquote>
+    {% else %}
+    </ol>
+    {% endif %}
+</div>
+{% endblock %}
+

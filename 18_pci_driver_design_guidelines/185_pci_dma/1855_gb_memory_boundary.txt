@@ -1,0 +1,73 @@
+<!--- @file
+  18.5.4 Bus Master Common Buffer Operations
+
+  Copyright (c) 2012-2017, Intel Corporation. All rights reserved.<BR>
+
+  Redistribution and use in source (original document form) and 'compiled'
+  forms (converted to PDF, epub, HTML and other formats) with or without
+  modification, are permitted provided that the following conditions are met:
+
+  1) Redistributions of source code (original document form) must retain the
+     above copyright notice, this list of conditions and the following
+     disclaimer as the first lines of this file unmodified.
+
+  2) Redistributions in compiled form (transformed to other DTDs, converted to
+     PDF, epub, HTML and other formats) must reproduce the above copyright
+     notice, this list of conditions and the following disclaimer in the
+     documentation and/or other materials provided with the distribution.
+
+  THIS DOCUMENTATION IS PROVIDED BY TIANOCORE PROJECT "AS IS" AND ANY EXPRESS OR
+  IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+  MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO
+  EVENT SHALL TIANOCORE PROJECT  BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS DOCUMENTATION, EVEN IF
+  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+-->
+
+### 18.5.5 GB Memory Boundary
+
+32-bit platforms may support more than 4 GB of system memory, but UEFI drivers
+for 32-bit platforms may only access memory below 4 GB. The 4 GB memory
+boundary becomes more complex on 64-bit platforms. Also, some 64-bit platforms
+may not map any system memory in the memory region below 4 GB. For more
+information about the 4 GB memory boundary on various architectures, see
+_Section 4.2_ of this guide.
+
+A UEFI driver should not allocate buffers from, or below, specific addresses.
+These types of allocations may fail on different system architectures.
+Likewise, the buffers used for DMA should not be allocated from, or below, a
+specific address. Also, UEFI drivers should always use the services of the PCI
+I/O Protocol to set up and complete DMA transactions.
+
+**********
+**Caution:** _It is not legal to program a system memory address into a DMA bus
+master. Such programming may function correctly on platforms having a
+one-to-one mapping between system memory addresses and PCI DMA addresses, but
+it will not work on platforms that remap DMA transactions, nor on platforms using a virtual
+addressing mode for system memory addresses not one-to-one mapped to the PCI
+DMA addresses._
+**********
+
+The following sections contain code examples for the different types of PCI DMA
+transactions supported by the _UEFI Specification._ It shows how to best use
+the PCI I/O Protocol services to maximize the platform compatibility of UEFI
+drivers.
+
+EDK II contains an implementation of the PCI Root Bridge I/O Protocol for a
+PC-ATcompatible chipset, and assumes a one-to-one mapping between system memory
+and PCI DMA addresses. It also assumes that DMA operations are not supported
+above 4 GB. The implementation of the `Map()` and `Unmap()` services in the PCI Root
+Bridge I/O Protocol handle DMA requests above 4 GB by allocating a buffer below
+4 GB and copying the data to that buffer below 4 GB.
+
+**********
+**Note:** _It is important to realize that these functions are implemented
+differently for platforms not assuming a one-to-one mapping between system
+memory addresses and PCI DMA addresses or if the platform can only perform DMA
+in specific ranges of system memory._
+**********

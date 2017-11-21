@@ -1,0 +1,10 @@
+{
+  "variables" : {
+    "draft"   : "yes",
+    "title"   : "EDK II Driver Writer's Guide for UEFI 2.3.1",
+    "version" : "Revision 1.10"
+  },
+
+  "plugins": ["puml"],
+  "pluginsConfig": {}
+}

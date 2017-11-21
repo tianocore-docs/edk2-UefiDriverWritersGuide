@@ -1,0 +1,17 @@
+{% extends "./page.html" %}
+
+{% block body %}
+<div class="pdf-footer">
+  {% if book.draft %}
+    <p>
+      <div style="position:absolute;text-align:left">DRAFT FOR REVIEW [{{ gitbook.time|date('MM/DD/YYYY hh:mm:ss') }}]</div>
+      <div style="text-align:right">{{ page.num }}</div>
+    </p>  
+  {% else %}
+    <p>
+      <div style="position:absolute;text-align:left">{{ book.version }}</div>
+      <div style="text-align:right">{{ page.num }}</div>
+    </p>  
+  {% endif %}
+</div>
+{% endblock %}

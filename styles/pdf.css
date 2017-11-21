@@ -1,0 +1,93 @@
+h1 {
+	font-family: Intel Clear;
+    color: #0071C5;
+    font-weight: bold;
+    font-size: 20pt;
+}
+
+h2 {
+ 	font-family: Intel Clear;
+	color: #0071C5;
+    font-weight: bold;
+    font-size: 16pt;
+}
+
+h3 {
+	font-family: Intel Clear;
+    color: #0071C5;
+    font-weight: bold;
+    font-size: 14pt;
+}
+
+h4 {
+	font-family: Intel Clear;
+    color: #0071C5;
+	font-weight: bold;
+    font-size: 12pt;
+}
+
+h5 {
+	font-family: Intel Clear;
+    font-weight: bold;
+    font-size: 11pt;
+}
+
+/* h6 is used for table, figure, and example captions */
+h6 {
+ 	font-family: Intel Clear;
+	font-weight: bold;
+    font-size: 10pt;
+    text-align: center;
+}
+
+/*  test items
+@page {
+    size: landscape;
+	orientation: landscape;
+}
+
+code {
+	font-family: Courier New;
+	font-size: 10pt;
+	color: #8B0000;
+}
+
+pre code {
+	font-family: Courier New;
+	font-size: 10pt;
+	color: #8B0000;
+}
+
+pre {
+	font-family: Courier New;
+	font-size: 10pt;
+	color: #8B0000;
+}
+
+blockquote {
+	font-family: Courier New;
+	font-size: 10pt;
+	color: #8B0000;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+    
+table tr {
+page-break-inside: avoid;
+}
+
+div.section-1, 
+div.section-2 {
+page-break-before: auto;
+}
+
+.markdown-section table {
+    table-layout: fixed;
+    display:block;
+    overflow-x: auto;
+}
+
+*/

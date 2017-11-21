@@ -1,0 +1,17 @@
+{% block book_footer %}
+<div>
+    <hr>
+    {% if book.draft %}
+      <h2>
+        <div style="position:absolute;text-align:left">{{ book.title }}</div>
+        <div style="position:absolute;width:100%;text-align:center">DRAFT [{{ gitbook.time|date('MM/DD/YYYY hh:mm:ss') }}]</div>
+        <div style="text-align:right">{{ book.version }}</div>
+      </h2>  
+    {% else %}
+      <h2>
+        <div style="position:absolute;text-align:left">{{ book.title }}</div>
+        <div style="text-align:right">{{ book.version }}</div>
+      </h2>  
+    {% endif %}
+</div>
+{% endblock %}
