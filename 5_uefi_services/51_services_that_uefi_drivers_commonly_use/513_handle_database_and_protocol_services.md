@@ -86,9 +86,8 @@ executables. In addition, `InstallMultipleProtocolInterfaces()` provides more
 extensive error checking than `InstallProtocolInterface()`, which allows
 developers to catch coding errors sooner, and results in higher quality UEFI
 Driver implementations. The main difference is that
-`InstallMultipleProtocolInterfaces()` guarantees that a duplicate Device Path
-
-Protocol is never be added to the Handle Database. _Section 3.9_ introduces the
+`InstallMultipleProtocolInterfaces()` guarantees that a duplicate Device Path Protocol 
+is never be added to the Handle Database. _Section 3.9_ introduces the
 concept of Device Paths and the requirement for them to be unique.
 
 The `InstallMultipleProtocolInterfaces()` and `UninstallMultipleProtocolInterfaces()`
