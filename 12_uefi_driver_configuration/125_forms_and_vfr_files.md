@@ -31,7 +31,7 @@
 
 ## 12.5 Forms and VFR files
 
-Here is a sample, simplified VFR file. It declares a form set with one from and
+Here is a sample, simplified VFR file. It declares a form set with one form and
 uses a single variable store to retrieve and save configuration settings. The
 form contains a title and four questions:
 1. Allows a user to select one of two pre-defined values.
