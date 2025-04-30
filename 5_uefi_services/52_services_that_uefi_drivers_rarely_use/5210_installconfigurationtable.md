@@ -118,7 +118,7 @@ UndiConfigTable = (UNDI_CONFIG_TABLE *)AllocateRuntimeZeroPool (
 //
 Status = gBS->InstallConfigurationTable (
                 &gEfiNetworkInterfaceIdentifierProtocolGuid_31,
-                &UndiConfigTable
+                UndiConfigTable
                 );
 if (EFI_ERROR (Status)) {
   return Status;
